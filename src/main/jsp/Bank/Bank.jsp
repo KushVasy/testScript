@@ -4,6 +4,7 @@
          prefix="c" %>
 <%@ taglib uri="/functions" prefix="f" %>
 <html>
+<script src="<spring:eval expression="@environment.getProperty('mycdn') "/>src/main/js/common.js?v=0.0.2"></script>
 <head><title>Localized Dates</title></head>
 <body bgcolor="white">
 <jsp:useBean id="locales" scope="application"

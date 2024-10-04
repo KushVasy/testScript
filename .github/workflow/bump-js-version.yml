@@ -1,0 +1,33 @@
+  name: Bump JS Version in JSP
+
+on:
+  push:
+    paths:
+      - '**/*.js'
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run bump version script
+        run: node scripts/bumpJsVersion.js
+
+      - name: Commit and push changes
+        run: |
+          git config  user.name 'kushpandya'
+          git config  user.email 'kushpandya@vasyerp.com'
+          git add .
+          git commit -m "Bumped JS version in JSP files"
+          git push
+        continue-on-error: true
