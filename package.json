@@ -20,6 +20,7 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "glob": "^11.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "winston": "^3.14.2"
   }
 }

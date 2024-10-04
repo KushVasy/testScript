@@ -1,6 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const winston = require('winston');
+
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.printf(({ timestamp, level, message }) => {
+      return `${timestamp} [${level}] ${message}`;
+    })
+  ),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'bump-js-version.log' })
+  ]
+});
 
 // Define the JSP directory
 const jspDirectory = 'src/main/jsp'; // Change this to your actual JSP folder
@@ -19,7 +35,7 @@ function incrementVersion(version) {
 function processJspFile(filePath) {
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
-      console.error(`Error reading file: ${filePath}`, err);
+      logger.error(`Error reading file: ${filePath}`, err);
       return;
     }
 
@@ -31,10 +47,10 @@ function processJspFile(filePath) {
     // Write updated content back to the file
     fs.writeFile(filePath, updatedContent, 'utf8', (err) => {
       if (err) {
-        console.error(`Error writing file: ${filePath}`, err);
+        logger.error(`Error writing file: ${filePath}`, err);
         return;
       }
-      console.log(`Updated version in: ${filePath}`);
+      logger.log(`Updated version in: ${filePath}`);
     });
   });
 }
@@ -42,7 +58,7 @@ function processJspFile(filePath) {
 // Get all JSP files in the specified directory
 glob(`${jspDirectory}/**/*.jsp`, (err, files) => {
   if (err) {
-    console.error('Error finding JSP files', err);
+    logger.error('Error finding JSP files', err);
     return;
   }
 

@@ -1,7 +1,7 @@
 /**
  *
  */
-/*var UpiValidator = {
+/*var UpiValidator = {c
         validators: {
             notEmpty: {
                 message: 'The UPI is required'
