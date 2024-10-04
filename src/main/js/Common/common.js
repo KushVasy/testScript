@@ -1,7 +1,7 @@
 /**
  *
  */
-/*var UpiValidator = {
+/*var UpiValidator = {c
         validators: {
             notEmpty: {
                 message: 'The UPI is required'
@@ -10,7 +10,7 @@
     };*/
     var save_flag=0;
 $(document).ready(function () {
-	 var bankForm = $('#bank_form');
+	 var bankForm = $('#bank_form2');
        bankForm.formValidation({
         framework: 'bootstrap',
         excluded: ":disabled",
