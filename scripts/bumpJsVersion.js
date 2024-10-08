@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const glob = require('fast-glob');;
+const glob = require('fast-glob');
 const winston = require('winston');
 
 console.log('Bumping JS version...');
@@ -19,13 +19,14 @@ const logger = winston.createLogger({
 });
 
 // Define the JSP directory
-const jspDirectory = 'src/main/jsp'; // Change this to your actual JSP folder
+const jspDirectory = 'src/main/jsp'; // Your JSP folder
 
 // Regular expression to match the JS file version
-const jsVersionRegex = /(<script src="[^"]+\.js\?v=)(\d+\.\d+\.\d+)"/g;
+const jsVersionRegex = /(<script\s+src="[^"]+\.js\?v=)(\d+\.\d+\.\d+)"/g;
 
 // Increment the patch version
 function incrementVersion(version) {
+  console.log('Incrementing version');
   let [major, minor, patch] = version.split('.').map(Number);
   patch += 1;
   return `${major}.${minor}.${patch}`;
@@ -33,6 +34,7 @@ function incrementVersion(version) {
 
 // Process each JSP file
 function processJspFile(filePath) {
+  console.log(`Processing file: ${filePath}`);
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       logger.error(`Error reading file: ${filePath}`, err);
@@ -44,19 +46,24 @@ function processJspFile(filePath) {
       return `${prefix}${newVersion}"`;
     });
 
-    // Write updated content back to the file
-    fs.writeFile(filePath, updatedContent, 'utf8', (err) => {
-      if (err) {
-        logger.error(`Error writing file: ${filePath}`, err);
-        return;
-      }
-      logger.log(`Updated version in: ${filePath}`);
-    });
+    // Write updated content back to the file only if changes are made
+    if (data !== updatedContent) {
+      fs.writeFile(filePath, updatedContent, 'utf8', (err) => {
+        if (err) {
+          logger.error(`Error writing file: ${filePath}`, err);
+          return;
+        }
+        logger.info(`Updated version in: ${filePath}`);
+      });
+    } else {
+      logger.info(`No version change needed in: ${filePath}`);
+    }
   });
 }
 
 // Get all JSP files in the specified directory
 glob(`${jspDirectory}/**/*.jsp`, (err, files) => {
+  console.log('Finding JSP files...');
   if (err) {
     logger.error('Error finding JSP files', err);
     return;
