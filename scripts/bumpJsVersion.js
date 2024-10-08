@@ -22,7 +22,7 @@ const logger = winston.createLogger({
 const jspDirectory = 'src/main/jsp'; // Your JSP folder
 
 // Regular expression to match the JS file version
-const jsVersionRegex = /(<script\s+src="[^"]+\.js\?v=)(\d+\.\d+\.\d+)"/g;
+const jsVersionRegex = /(\d+\.\d+\.\d+)/g;
 
 // Increment the patch version
 function incrementVersion(version) {
