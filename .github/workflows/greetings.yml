@@ -3,7 +3,7 @@ name: greetings
 on:
   push:
     paths:
-      - 'src/main/js/*.js'  # This will trigger the action when any .js file is committed
+      - 'src/main/js/**/*.js'  # This will trigger the action when any .js file is committed
 
 jobs:
   bump-version:
