@@ -1,9 +1,9 @@
-  name: Bump JS Version in JSP
+name: greetings
 
 on:
   push:
     paths:
-      - '**/*.js'
+      - 'src/main/js/*.js'  # This will trigger the action when any .js file is committed
 
 jobs:
   bump-version:
@@ -25,8 +25,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config  user.name 'kushpandya'
-          git config  user.email 'kushpandya@vasyerp.com'
+          git config --global user.name 'kushpandya'
+          git config --global user.email 'kushpandya@vasyerp.com'
           git add .
           git commit -m "Bumped JS version in JSP files"
           git push
