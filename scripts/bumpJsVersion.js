@@ -58,7 +58,7 @@ function processJspFile(filePath, modifiedFiles) {
 // Get list of modified JavaScript files in the current commit
 function getModifiedFiles() {
   try {
-    const modifiedFiles = execSync('git diff --name-only HEAD~1 HEAD')
+    const modifiedFiles = execSync('git diff --name-only HEAD')
       .toString()
       .split('\n')
       .filter(file => file.endsWith('.js')); // Filter for JS files
