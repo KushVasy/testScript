@@ -10,7 +10,7 @@
     };*/
     var save_flag=0;
 $(document).ready(function () {
-	 var bankForm = $('#unCommon_form8');
+	 var bankForm = $('#unCommon_form_1');
        bankForm.formValidation({
         framework: 'bootstrap',
         excluded: ":disabled",
