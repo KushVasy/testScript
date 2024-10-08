@@ -1,4 +1,4 @@
-name: Bump JS Version in JSP files
+name: greetings
 
 on:
   push:
