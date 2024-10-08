@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
+const glob = require('fast-glob');;
 const winston = require('winston');
 
 
