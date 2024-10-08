@@ -8,6 +8,10 @@ on:
 jobs:
   bump-version:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Grants permission to push changes
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,6 +28,8 @@ jobs:
         run: node scripts/bumpJsVersion.js
 
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the automatically provided GitHub token
         run: |
           git config --global user.name 'kushpandya'
           git config --global user.email 'kushpandya@vasyerp.com'
