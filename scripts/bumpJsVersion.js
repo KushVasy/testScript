@@ -3,7 +3,7 @@ const path = require('path');
 const glob = require('fast-glob');;
 const winston = require('winston');
 
-
+console.log('Bumping JS version...');
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
