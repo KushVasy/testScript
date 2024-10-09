@@ -35,8 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the automatically provided GitHub token
         run: |
-          git config --global user.name 'kushpandya'
-          git config --global user.email 'kushpandya@vasyerp.com'
+          git config  user.name 'kushpandya'
+          git config  user.email 'kushpandya@vasyerp.com'
           git add .
           git commit -m "Bumped JS version in JSP files"
           git push
