@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with: 
-        fetch-depth: 0  
+          fetch-depth: 0  # Correct indentation under 'with'
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -35,8 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the automatically provided GitHub token
         run: |
-          git config  user.name 'kushpandya'
-          git config  user.email 'kushpandya@vasyerp.com'
+          git config user.name 'kushpandya'
+          git config user.email 'kushpandya@vasyerp.com'
           git add .
           git commit -m "Bumped JS version in JSP files"
           git push
