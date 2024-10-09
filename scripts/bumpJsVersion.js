@@ -32,7 +32,7 @@ function processJspFile(filePath, modifiedFiles) {
     // Check for each modified file if it is in the JSP file
     modifiedFiles.forEach(modifiedFile => {
       const jsFileName = path.basename(modifiedFile);
-      const regex = new RegExp(`(${jsFileName}\\?v=)(\\d+\\.\\d+\\.\\d+)`, 'g');
+      const regex = new RegExp(`(/${jsFileName}\\?v=)(\\d+\\.\\d+\\.\\d+)`, 'g');
 
       updatedContent = updatedContent.replace(regex, (match, prefix, version) => {
         const newVersion = incrementVersion(version);
