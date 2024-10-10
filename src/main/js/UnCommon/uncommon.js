@@ -39,7 +39,7 @@ $(document).ready(function () {
             bankBranch: {
                 validators: {
                     notEmpty: {
-                        message: 'The branch name is required'
+                        message: 'The branch name is required again'
                     },
                     stringLength: {
                         max: 50,
