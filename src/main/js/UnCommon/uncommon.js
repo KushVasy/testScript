@@ -39,7 +39,7 @@ $(document).ready(function () {
             bankBranch: {
                 validators: {
                     notEmpty: {
-                        message: 'The branch name is required tests'
+                        message: 'The branch name is required uncommon'
                     },
                     stringLength: {
                         max: 50,
